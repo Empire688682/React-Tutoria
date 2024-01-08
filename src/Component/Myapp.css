@@ -1,0 +1,25 @@
+.container{
+    padding: 30px 5%;
+    width: 100%;
+    text-align: center;
+}
+.container button{
+    margin-left: 10px;
+}
+.nameCon{
+    cursor: pointer;
+    transition: .3s ease-in-out ;
+    margin-top: 20px;
+}
+.nameCon:hover{
+    color: white;
+}
+.control-btn{
+    background-color: black;
+    display: inline-block;
+    margin-top: 30px;
+    color: white;
+    padding: 15px 40px;
+    border-radius: 50px;
+    cursor: pointer;
+}
