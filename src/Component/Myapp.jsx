@@ -4,8 +4,6 @@ import '../Component/Myapp.css';
 function Myapp() {
    
   const [name, setName] = useState("");
-  const [stopBtn, setStopBtn] = useState("Puase");
-  const [playBtn, setPlayBtnBtn] = useState("Play");
   const utteranceRef = useRef(null);
 
   const onChange = (event) =>{
