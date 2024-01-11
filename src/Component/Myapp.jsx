@@ -1,51 +1,29 @@
-import React, { useState, useRef } from 'react'
+import React, { useState} from 'react'
 import '../Component/Myapp.css';
 
 function Myapp() {
-   
-  const [name, setName] = useState("");
-  const utteranceRef = useRef(null);
+  const [count, setCount] = useState(0);
+  const [showText, setShowText] = useState(null);
 
-  const onChange = (event) =>{
-    const input = event.target.value;
-    const newInput = input;
-    setName(newInput);
-  }
-
-  const speak = () =>{
-    const speech = new SpeechSynthesisUtterance();
-    speech.text = name;
-    window.speechSynthesis.speak(speech);
-
-    utteranceRef.current = speech;
-  }
-
-  const stopSpeaking = () =>{
-    if(utteranceRef){
-      window.speechSynthesis.pause()
+  const doSomething = () =>{
+    setCount(count + 1);
+    if (count === 10){
+      setCount(0);
+    }
+    if(count % 2 === 1){
+      setShowText(`ShowText ${count+1}`)
+    }
+    else{
+      setShowText(null)
     }
   }
-
-  const startSpeaking = () =>{
-    speak();
-    if(utteranceRef){
-      window.speechSynthesis.resume()
-    }
-  }
-
-  
   return ( 
+    <div className='container'>
+    <h1>{count}</h1>
+    <button onClick={doSomething}>Increment</button>
     <div>
-      <div className="container">
-        <div>
-          <textarea onChange={onChange} name="" id="" cols="30" rows="10"></textarea>
-          <div className='nameCon'>
-          {name}
-          </div>
-          <div className="control-btn" onClick={stopSpeaking}>{stopBtn}</div>
-          <div className="control-btn" onClick={startSpeaking} >{playBtn}</div>
-        </div>
-      </div>
+    {showText}
+    </div>
     </div>
   )
 }
